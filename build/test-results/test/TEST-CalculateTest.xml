@@ -1,13 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="CalculateTest" tests="1" skipped="0" failures="1" errors="0" timestamp="2020-01-29T12:10:41" hostname="DESKTOP-CHOBS2U" time="0.033">
+<testsuite name="CalculateTest" tests="9" skipped="0" failures="1" errors="0" timestamp="2020-01-30T13:11:35" hostname="DESKTOP-CHOBS2U" time="0.077">
   <properties/>
-  <testcase name="AddUpToTwo()" classname="CalculateTest" time="0.033">
-    <failure message="java.lang.NumberFormatException: For input string: &quot;1,1&quot;" type="java.lang.NumberFormatException">java.lang.NumberFormatException: For input string: &quot;1,1&quot;
-	at java.base/java.lang.NumberFormatException.forInputString(NumberFormatException.java:65)
-	at java.base/java.lang.Integer.parseInt(Integer.java:652)
-	at java.base/java.lang.Integer.parseInt(Integer.java:770)
-	at Calculate.add(Calculate.java:8)
-	at CalculateTest.AddUpToTwo(CalculateTest.java:11)
+  <testcase name="AddWithNegativeNumbers()" classname="CalculateTest" time="0.049"/>
+  <testcase name="AddWithDifferentDelimeters()" classname="CalculateTest" time="0.002"/>
+  <testcase name="AddThatIgnoreGreaterOrEqualThan1000()" classname="CalculateTest" time="0.002"/>
+  <testcase name="AddThatSupportAnyLengthDelimiter()" classname="CalculateTest" time="0.002"/>
+  <testcase name="AddUpToTwo()" classname="CalculateTest" time="0.003"/>
+  <testcase name="AddThatCanHandleInvalidInput()" classname="CalculateTest" time="0.006">
+    <failure message="org.opentest4j.AssertionFailedError: Should throw, the input is invalid ==&gt; Expected java.lang.IllegalArgumentException to be thrown, but nothing was thrown." type="org.opentest4j.AssertionFailedError">org.opentest4j.AssertionFailedError: Should throw, the input is invalid ==&gt; Expected java.lang.IllegalArgumentException to be thrown, but nothing was thrown.
+	at org.junit.jupiter.api.AssertThrows.assertThrows(AssertThrows.java:71)
+	at org.junit.jupiter.api.AssertThrows.assertThrows(AssertThrows.java:41)
+	at org.junit.jupiter.api.Assertions.assertThrows(Assertions.java:2968)
+	at CalculateTest.AddThatCanHandleInvalidInput(CalculateTest.java:63)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
 	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
@@ -98,6 +102,9 @@
 	at java.base/java.lang.Thread.run(Thread.java:834)
 </failure>
   </testcase>
+  <testcase name="AddThatSupportAnyDelimiterAndLength()" classname="CalculateTest" time="0.002"/>
+  <testcase name="AddWithNewLines()" classname="CalculateTest" time="0.0"/>
+  <testcase name="AddMultiple()" classname="CalculateTest" time="0.001"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

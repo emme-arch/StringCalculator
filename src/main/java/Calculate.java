@@ -1,44 +1,54 @@
 import java.util.ArrayList;
-import java.util.List;
+import java.util.regex.Pattern;
 
 public class  Calculate {
-    static String input;
-    static int sum;
+
+
     private static IIOProvider _iio;
-    public static int add(String s) {
-           if(s == null) throw new NullPointerException("s");
-           if (s.isEmpty()) return 0;
-           input = s;
-           int number = Integer.parseInt(s);
-           EnsureNonNegatives(number);
-           sum = add(number);
-           OutValue();
-        return sum;
-    }
+    private static Pattern _inputParsingRegex = Pattern.compile("(?<definition>//(?<delimiter>.+)\n).*");
+    private static Pattern pattern = Pattern.compile("(?<definition>//(?<delimiter>.+)\n).*");
 
-    private static void OutValue(int sum) {
-        if (_iio != null)
-            _iio.Out(sum.toString(CultureInfo.InvariantCulture));
-    }
+    static String _input;
+    private static final int Value = 1000;
 
-    private static void EnsureNonNegatives(List<Integer> number) throws Exception {
-        List<Integer> negatives = new ArrayList<>() {
-        };
-        for (int num : number){
-            if (num < 0)
-            {
-                negatives.add(num);
+    public static int add(String input) {
+        StringBuilder delimeter = new StringBuilder(",\n");
+        if (input.startsWith("//")){
+            delimeter = new StringBuilder(input.substring(input.indexOf("//") + 2, input.indexOf("\n")));
+            String[] arr = delimeter.toString().split("[,]");
+            for (String s : arr){
+                delimeter.append(s);
             }
-            if (negatives.size() > 0){
-                throw new Exception("negative not allowed");
+            input = input.substring(input.indexOf("\n"));
+        }
+        delimeter = new StringBuilder("[" + delimeter + "]");
+        return add(input, delimeter.toString());
+    }
+    static int add(final String numbers, String delimiter) {
+        String[] arr = numbers.split("[" + delimiter + "]");
+        ArrayList<Integer> negativeNumbers = new ArrayList<>();
+        int sum =0;
+        try{
+            for (String ans : arr){
+                if (!ans.trim().isEmpty()){
+                    int i = Integer.parseInt(ans.trim());
+                    if (i<0){
+                        negativeNumbers.add(i);
+                        } else if (i < Value) {
+                            sum += i;
+                    }
+                }
             }
+        } catch (Exception ignored){
 
         }
-    }
-
-    static int add(int...a) {
-        for (int c = 0; c < a.length; c++) {
-            sum = sum + a[c];
+        if (negativeNumbers.size() > 1){
+            StringBuilder negative = new StringBuilder();
+            for (int i = 0; i < negativeNumbers.size() -1; i++){
+                negative.append(negativeNumbers.get(i)).append(", ");
+            }
+            negative.append(negativeNumbers.get(negativeNumbers.size()-1));
+            throw new IllegalArgumentException("\nERROR: negatives not allowed -1,-2");
         }
         return sum;
     }
