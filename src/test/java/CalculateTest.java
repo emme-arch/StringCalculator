@@ -25,7 +25,7 @@ public class CalculateTest {
 
     //Number 4
     @Test
-    void AddWithDifferentDelimeters() {
+    void AddWithDifferentDelimiters() {
         assertEquals(3, Calculate.add("//;\n1;2"));
         assertEquals(3, Calculate.add("//4\n142"));
     }
