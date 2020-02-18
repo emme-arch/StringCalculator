@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="CalculateTest" tests="9" skipped="0" failures="1" errors="0" timestamp="2020-01-30T13:12:44" hostname="DESKTOP-CHOBS2U" time="0.089">
+<testsuite name="CalculateTest" tests="9" skipped="0" failures="1" errors="0" timestamp="2020-02-18T07:36:01" hostname="DESKTOP-C7SAC1V" time="0.115">
   <properties/>
-  <testcase name="AddWithNegativeNumbers()" classname="CalculateTest" time="0.05"/>
-  <testcase name="AddWithDifferentDelimeters()" classname="CalculateTest" time="0.003"/>
-  <testcase name="AddThatIgnoreGreaterOrEqualThan1000()" classname="CalculateTest" time="0.002"/>
+  <testcase name="AddWithNegativeNumbers()" classname="CalculateTest" time="0.06"/>
+  <testcase name="AddWithDifferentDelimeters()" classname="CalculateTest" time="0.007"/>
+  <testcase name="AddThatIgnoreGreaterOrEqualThan1000()" classname="CalculateTest" time="0.006"/>
   <testcase name="AddThatSupportAnyLengthDelimiter()" classname="CalculateTest" time="0.001"/>
-  <testcase name="AddUpToTwo()" classname="CalculateTest" time="0.001"/>
-  <testcase name="AddThatCanHandleInvalidInput()" classname="CalculateTest" time="0.009">
+  <testcase name="AddUpToTwo()" classname="CalculateTest" time="0.002"/>
+  <testcase name="AddThatCanHandleInvalidInput()" classname="CalculateTest" time="0.007">
     <failure message="org.opentest4j.AssertionFailedError: Should throw, the input is invalid ==&gt; Expected java.lang.IllegalArgumentException to be thrown, but nothing was thrown." type="org.opentest4j.AssertionFailedError">org.opentest4j.AssertionFailedError: Should throw, the input is invalid ==&gt; Expected java.lang.IllegalArgumentException to be thrown, but nothing was thrown.
 	at org.junit.jupiter.api.AssertThrows.assertThrows(AssertThrows.java:71)
 	at org.junit.jupiter.api.AssertThrows.assertThrows(AssertThrows.java:41)
@@ -104,7 +104,7 @@
   </testcase>
   <testcase name="AddThatSupportAnyDelimiterAndLength()" classname="CalculateTest" time="0.002"/>
   <testcase name="AddWithNewLines()" classname="CalculateTest" time="0.001"/>
-  <testcase name="AddMultiple()" classname="CalculateTest" time="0.009"/>
+  <testcase name="AddMultiple()" classname="CalculateTest" time="0.001"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>
