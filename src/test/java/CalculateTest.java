@@ -60,6 +60,7 @@ public class CalculateTest {
     //Number 9
     @Test
     void AddThatCanHandleInvalidInput() {
+        assertThrows(IllegalArgumentException.class, () -> Calculate.add("//;\n1000;1;2;"), "Should throw, the input is invalid");
         assertThrows(IllegalArgumentException.class, () -> Calculate.add("   //;\n1000,1;2"), "Should throw, the input is invalid");
         assertThrows(IllegalArgumentException.class, () -> Calculate.add("1,2,3//;\n1000,1;2"), "Should throw, the input is invalid");
     }
