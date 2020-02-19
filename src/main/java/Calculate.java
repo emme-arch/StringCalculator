@@ -2,32 +2,30 @@ import java.util.ArrayList;
 
 public class Calculate {
     public static int add(String input) {
-        StringBuilder delimiter = new StringBuilder(",\n");
-        if (input.startsWith("//")) { // looking for delimiters with startIndex of 2 and endIndex of breakLine
-            delimiter = new StringBuilder(input.substring(input.indexOf("//") + 2, input.indexOf("\n")));
+        String deli = ",\n";
+        if (input.startsWith("//")) {
+            deli += input.substring(2, input.indexOf("\n"));
             input = input.substring(input.indexOf("\n"));
         }
-        delimiter = new StringBuilder("[" + delimiter + "]");
-        return add(input, delimiter.toString());
+        return add(input, "[" + deli + "]");
     }
 
-    static int add(final String numbers, String delimiter) {
-        String[] arr = numbers.split("[" + delimiter + "]");
+    static int add(final String numbers, String deli) {
+        String[] arr = numbers.split("[" + deli + "]");
         ArrayList<Integer> negativeNumbers = new ArrayList<>(); //Tracking negative numbers to be displayed later
         int sum = 0;
         try {
-            for (String ans : arr) {
-                if (!ans.trim().isEmpty()) {
-                    int i = Integer.parseInt(ans.trim()); // converting string to integer
-                    if (i < 0) {
-                        negativeNumbers.add(i);
-                    } else if (i < 1000) {  //ignores integers greater than or equal to 1000
-                        sum += i;
+            for (String numberAtIndex : arr) {
+                if (!numberAtIndex.trim().isEmpty() && (Character.isDigit(numberAtIndex.charAt(0)) || numberAtIndex.charAt(0) == '-' )) {
+                    if (Integer.parseInt(numberAtIndex.trim()) < 0) {
+                        negativeNumbers.add(Integer.parseInt(numberAtIndex.trim()));
+                    } else if (Integer.parseInt(numberAtIndex.trim()) < 1000) {  //ignores integers greater than or equal to 1000
+                        sum += Integer.parseInt(numberAtIndex.trim());
                     }
                 }
-            } //
+            }
         } catch (IllegalArgumentException e) {
-            System.out.println(e);
+            throw new IllegalArgumentException("ERROR: invalid input");
         }
         if (!negativeNumbers.isEmpty()) // throw going to be handled by assertThrows
             throw new IllegalArgumentException("\nERROR: negatives not allowed " + negativeNumbers.toString().replace("[", "").replace("]", ""));
